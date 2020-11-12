@@ -1,0 +1,32 @@
+Дан список городов. Каждый путь между городами имеет цену (целое положительное число). Задача - найти самый выгодный путь между двумя городами. Максимально возможная цена пути - 200000.
+
+Входные и выходные данные должны храниться в реляционной БД
+
+Сущности БД:
+
+ - Location (locations)
+   (
+     id:   integer [PK]
+     name: text (unique, not null)
+   )
+ 
+ - Route (routes)
+   (
+     id:      integer [PK]
+     from_id: integer (reference to locations)
+     to_id:   integer (reference to locations)
+     cost:    integer
+   )
+ 
+ - Problem (problems)
+   (
+     id:      integer [PK]
+     from_id: integer (reference to locations)
+     to_id:   integer (reference to locations)
+   )
+ 
+ - Solution (solutions)
+   (
+     problem_id: integer (reference to problems) [PK]
+     cost:       integer (nullable)
+   )
